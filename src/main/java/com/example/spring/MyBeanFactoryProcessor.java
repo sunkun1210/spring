@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class MyBeanFactoryProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        System.out.println("############");
+        System.out.println("############修改bean定义的属性############");
         BeanDefinition beanDefinition= beanFactory.getBeanDefinition("application");
         beanDefinition.setScope("prototype");
     }
