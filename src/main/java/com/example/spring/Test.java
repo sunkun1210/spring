@@ -11,7 +11,7 @@ public class Test {
         annotationConfigApplicationContext.register(AppConfig.class);
         //
         annotationConfigApplicationContext.refresh();
-        System.out.println("========="+annotationConfigApplicationContext.getBean(Application.class).hashCode());
+        System.out.println("========="+annotationConfigApplicationContext.getBean(User.class).hashCode());
         System.out.println("========="+annotationConfigApplicationContext.getBean(Application.class).hashCode());
     }
 
