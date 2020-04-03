@@ -11,6 +11,7 @@ import java.util.Set;
 /***
  *    b、扫描指定的路径，接口定义
  */
+@Deprecated
 public class MyClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionScanner {
 
     public MyClassPathBeanDefinitionScanner(BeanDefinitionRegistry registry) {
@@ -25,6 +26,7 @@ public class MyClassPathBeanDefinitionScanner extends ClassPathBeanDefinitionSca
     @Override
     protected Set<BeanDefinitionHolder> doScan(String... basePackages) {
         System.out.println("doScan扫描开始&&&&&&&&&&&&&&&"+basePackages+"&&&&&&&&&&&&&");
+        //返回扫描包下面的所有接口!!!  优点可以for循环
         Set<BeanDefinitionHolder> beanDefinitions = super.doScan(basePackages);
         for (BeanDefinitionHolder holder : beanDefinitions) {
             GenericBeanDefinition definition = (GenericBeanDefinition) holder.getBeanDefinition();

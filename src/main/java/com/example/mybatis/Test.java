@@ -12,6 +12,8 @@ public class Test {
         AnnotationConfigApplicationContext annotationConfigApplicationContext=new AnnotationConfigApplicationContext(AppConfig.class);
         UserRepo myService =annotationConfigApplicationContext.getBean(UserRepo.class);
         myService.get();
+        UserRepo2 myService2 =annotationConfigApplicationContext.getBean(UserRepo2.class);
+        myService2.get();
     }
 
 

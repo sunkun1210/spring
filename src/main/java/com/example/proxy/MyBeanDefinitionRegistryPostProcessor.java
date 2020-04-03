@@ -1,10 +1,14 @@
 package com.example.proxy;
 
 
+import com.example.spring.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.support.AbstractBeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 import org.springframework.context.ApplicationContext;
@@ -48,9 +52,14 @@ public class MyBeanDefinitionRegistryPostProcessor implements ApplicationContext
             System.err.println("postProcessBeanDefinitionRegistry  bean的名称--->"+beanDefinitionName);
         }
         // 需要被代理的接口
-        MyClassPathBeanDefinitionScanner annotationScanner = new MyClassPathBeanDefinitionScanner(registry);
-        annotationScanner.setResourceLoader(applicationContext);
-        annotationScanner.scan("com.example.proxy");
-        System.err.println("MyClassPathBeanDefinitionScanner 设置扫描包结束");
+//        MyClassPathBeanDefinitionScanner annotationScanner = new MyClassPathBeanDefinitionScanner(registry);
+//        annotationScanner.setResourceLoader(applicationContext);
+//        annotationScanner.scan("com.example.proxy");
+//        System.err.println("MyClassPathBeanDefinitionScanner 设置扫描包结束");
+        BeanDefinitionBuilder beanDefinitionBuilder=BeanDefinitionBuilder.genericBeanDefinition();
+        AbstractBeanDefinition beanDefinition= beanDefinitionBuilder.getBeanDefinition();
+        beanDefinition.setBeanClass(ProxyFactoryBean.class);
+        registry.registerBeanDefinition("bizService",beanDefinition);
+        registry.registerBeanDefinition("bizService2",beanDefinition);//如果多个 参考Mybatis
     }
 }
