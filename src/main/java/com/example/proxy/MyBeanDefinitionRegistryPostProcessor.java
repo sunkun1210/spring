@@ -36,6 +36,9 @@ public class MyBeanDefinitionRegistryPostProcessor implements ApplicationContext
         for (String beanDefinitionName : beanFactory.getBeanDefinitionNames()) {
             System.err.println("postProcessBeanFactory  bean的名称--->"+beanDefinitionName);
         }
+        System.err.println("############修改bean定义的属性############");
+        ProxyFactoryBean beanDefinition= beanFactory.getBean(ProxyFactoryBean.class);
+        beanDefinition.setServiceInterface(BizService.class);
     }
 
     @Override
