@@ -74,10 +74,11 @@ public class PoolServer {
                     //
                     channel.register(this.selector, SelectionKey.OP_READ);
                     //
-                } else if (key.isReadable()) {
+                } else
+                 if (key.isReadable()) {
                     //
                     key.interestOps(key.interestOps()&(~SelectionKey.OP_READ));
-                    //
+                    /**和NIO-Single相比的核心代码  worker线程池**/
                     pool.execute(new ThreadHandlerChannel(key));
                 }
             }

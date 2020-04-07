@@ -12,12 +12,15 @@ import java.util.Set;
 
 public class Server {
     public static void main(String[] args) throws IOException {
+        /**ServerSocketChannel 这个通道是双向的 可以读可以写**/
         ServerSocketChannel ssc = ServerSocketChannel.open();
         ssc.socket().bind(new InetSocketAddress("127.0.0.1", 8888));
+        //设置成非阻塞
         ssc.configureBlocking(false);
 
         System.out.println("server started, listening on :" + ssc.getLocalAddress());
         Selector selector = Selector.open();
+        //注册对哪些事件感兴趣:OP_ACCEPT
         ssc.register(selector, SelectionKey.OP_ACCEPT);
 
         while(true) {
@@ -34,7 +37,7 @@ public class Server {
     }
 
     private static void handle(SelectionKey key) {
-        if(key.isAcceptable()) {
+        if(key.isAcceptable()) {//说明有一个客户端要连上来
             try {
                 ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
                 SocketChannel sc = ssc.accept();
@@ -63,6 +66,7 @@ public class Server {
             SocketChannel sc = null;
             try {
                 sc = (SocketChannel)key.channel();
+                /**buffer就是内存中的一个字节数组 它会把字节数组填满或者填到一定位置，直接从字节数组读和写**/
                 ByteBuffer buffer = ByteBuffer.allocate(512);
                 buffer.clear();
                 int len = sc.read(buffer);

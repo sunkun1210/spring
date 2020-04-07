@@ -25,15 +25,17 @@ class NettyServer {
     }
 
     public void serverStart() {
+        /**定义两个线程池**/
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         ServerBootstrap b = new ServerBootstrap();
-
+        /**把这两个group传给Server启动的封装类**/
         b.group(bossGroup, workerGroup)
-                .channel(NioServerSocketChannel.class)
-                .childHandler(new ChannelInitializer<SocketChannel>() {
+                .channel(NioServerSocketChannel.class)/**指定Server启动之后 客户端连接上来的通道类型**/
+                .childHandler(new ChannelInitializer<SocketChannel>() {/**每一个客户端连上来之后 监听器处理**/
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
+                        /**通道一旦init 在这个通道上就添加对这个通道的处理器**/
                         ch.pipeline().addLast(new Handler());
                     }
                 });
@@ -69,7 +71,7 @@ class Handler extends ChannelInboundHandlerAdapter {
         //buf.release();
     }
 
-
+    /**发生异常的回调方法**/
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         //super.exceptionCaught(ctx, cause);

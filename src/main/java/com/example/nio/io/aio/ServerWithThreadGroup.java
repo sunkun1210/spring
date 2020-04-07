@@ -19,7 +19,10 @@ public class ServerWithThreadGroup {
         //中文测试
         final AsynchronousServerSocketChannel serverChannel = AsynchronousServerSocketChannel.open(threadGroup)
                 .bind(new InetSocketAddress(8888));
-
+        /***
+         * CompletionHandler和accept不阻塞:类似观察者的设计模式
+         * 处理的代码写好交给你，什么时候完成了 自己去调用，又叫回调函数
+         */
         serverChannel.accept(null, new CompletionHandler<AsynchronousSocketChannel, Object>() {
             @Override
             public void completed(AsynchronousSocketChannel client, Object attachment) {
@@ -27,6 +30,7 @@ public class ServerWithThreadGroup {
                 try {
                     System.out.println(client.getRemoteAddress());
                     ByteBuffer buffer = ByteBuffer.allocate(1024);
+                    /**此处的CompletionHandler和accept中的CompletionHandler一样 用的观察者设计模式**/
                     client.read(buffer, buffer, new CompletionHandler<Integer, ByteBuffer>() {
                         @Override
                         public void completed(Integer result, ByteBuffer attachment) {
