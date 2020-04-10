@@ -23,11 +23,11 @@ public class InsertionSort {
         }
     }
 
-    /**把第n个牌 插到前面的位置上*/
-    static  void findMin(int[] arr, int n){
-        for(int i=n;i>0;i--){
-            if (arr[i]<arr[i-1]){
-                swap(arr,i,i-1);
+    /**把前N个排成有序*/
+    static  void insertN(int[] arr, int i){
+        for(int j=i;j>0;j--){
+            if (arr[j]<arr[j-1]){
+                swap(arr,j,j-1);
             }
         }
     }
