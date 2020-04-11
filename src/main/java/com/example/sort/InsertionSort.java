@@ -31,11 +31,6 @@ public class InsertionSort {
             }
         }
     }
-    /**把第n个牌 插到前面的位置上*/
-    static  void findMin2(int[] arr, int n){
-
-    }
-
 
     static  void swap(int[] arr,int i,int j){
         int temp=arr[i];
