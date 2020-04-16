@@ -4,6 +4,7 @@ package com.example.sort;
 public class QuickSort {
     // 测试 QuickSort
     public static void main(String[] args) {
+//        int[] arr ={8,1,9,5,4,6,10,6};
         int[] arr ={4,6};
         sort(arr,0,arr.length-1);
         print(arr);
@@ -23,12 +24,16 @@ public class QuickSort {
         int pivot=arr[rightBound];
         int left=leftBound;
         int right=rightBound-1;
-        while(left<=right){
-            while (left<=right&&arr[left]<=pivot) left++;
-            while (left<=right&&arr[right]>pivot) right--;
+        while(left<right){
+            while (left<=right&&arr[left]<=pivot) {
+                left++;
+            }
+            while (left<=right&&arr[right]>pivot) {
+                right--;
+            }
             if (left<right)  swap(arr,left,right);
         }
-        //把轴放到该放的正确位置上去 (轴一定比左边的小 不然left++)
+        //把轴放到该放的正确位置上去 (轴一定比左边的大 不然left++)
         swap(arr,left,rightBound);
         return left; //返回轴的位置
     }
