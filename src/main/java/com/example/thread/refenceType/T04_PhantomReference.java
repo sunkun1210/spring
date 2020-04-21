@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * 管理堆外内存 DirectByteBuffer(NIO的API 直接指向JVM外的内存 不需要Copy到JVM中 操作系统直接管理)，JVM回收不了
  * 当某个这种引用被回收的时候 会通知队列(队列加一个值) 然后清理堆外内存(GC线程)
- *
  */
 public class T04_PhantomReference {
     public static final List<Object> LIST = new ArrayList<>();
@@ -45,6 +44,5 @@ public class T04_PhantomReference {
             e.printStackTrace();
         }
     }
-
 
 }

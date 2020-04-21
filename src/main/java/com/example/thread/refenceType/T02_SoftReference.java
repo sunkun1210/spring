@@ -5,6 +5,7 @@ import java.lang.ref.SoftReference;
 /***
  * 空间不够就会回收
  * 软引用适合做缓存(空间足够就放在那里 不够用会回收)
+ * -Xmx=20M
  */
 public class T02_SoftReference {
 
