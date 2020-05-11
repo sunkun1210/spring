@@ -9,25 +9,20 @@ public class WithoutRepeatingCharacters {
 
 
     public static void main(String[] args) {
-        String strs="asad";
-        char[]  c = strs.toCharArray();
-        Map<Object,Integer> map = new HashMap<>();
-        int max=0;
-        for(int i=0;i<c.length;i++){
-            int length=0;
-            char str=c[i];
-            for(int j=i;j<c.length;j++){
-                if (!map.containsKey(c[j])||(map.containsKey(c[j])&&map.get(c[j])<length)){
-                    length++;
-                }else {
-                    break;
-                }
-                if (length>max){
-                    max=length;
-                }
-                map.put(str,length);
-            }
-        }
+       int max= lengthOfLongestSubstring("12345678");
         System.out.println("  "+max);
+    }
+    public static int lengthOfLongestSubstring(String s) {
+        int n = s.length(), ans = 0;
+        Map<Character, Integer> map = new HashMap<>(); // current index of character
+        // try to extend the range [i, j]
+        for (int j = 0, i = 0; j < n; j++) {
+            if (map.containsKey(s.charAt(j))) {
+                i = Math.max(map.get(s.charAt(j)), i);
+            }
+            ans = Math.max(ans, j - i + 1);
+            map.put(s.charAt(j), j + 1);
+        }
+        return ans;
     }
 }
