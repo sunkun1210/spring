@@ -9,7 +9,7 @@ public class WithoutRepeatingCharacters {
 
 
     public static void main(String[] args) {
-       int max= lengthOfLongestSubstring("12345678");
+       int max= lengthOfLongestSubstring("12123");
         System.out.println("  "+max);
     }
     public static int lengthOfLongestSubstring(String s) {
