@@ -9,15 +9,7 @@ public class SelectionSort {
     }
 
     static  void sort(int[] arr){
-        for(int i=0;i<arr.length-1;i++){
-            int minPos=i; // 随着i的变化而变化
-            for(int j=i+1;j<arr.length;j++){
-                if (arr[j]<arr[minPos]){//这个时候 minPos要更新
-                    minPos=j;
-                }
-            }
-            swap(arr,i,minPos);
-        }
+
     }
 
     static  void swap(int[] arr,int i,int j){
