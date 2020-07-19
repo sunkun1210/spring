@@ -38,7 +38,7 @@ public class Test {
 //        //
 //        annotationConfigApplicationContext.refresh();
 
-        System.out.println("========="+annotationConfigApplicationContext.getBean(User.class).hashCode());
+//        System.out.println("========="+annotationConfigApplicationContext.getBean(User.class).hashCode());
         System.out.println("========="+annotationConfigApplicationContext.getBean(Application.class).hashCode());
 //        IndexDao indexDao=annotationConfigApplicationContext.getBean(IndexDao.class);
 //        indexDao.query();
