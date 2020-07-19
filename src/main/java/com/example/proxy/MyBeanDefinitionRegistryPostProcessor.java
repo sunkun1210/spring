@@ -60,6 +60,6 @@ public class MyBeanDefinitionRegistryPostProcessor implements ApplicationContext
         AbstractBeanDefinition beanDefinition= beanDefinitionBuilder.getBeanDefinition();
         beanDefinition.setBeanClass(ProxyFactoryBean.class);
         registry.registerBeanDefinition("bizService",beanDefinition);
-        registry.registerBeanDefinition("bizService2",beanDefinition);//如果多个 参考Mybatis
+       // registry.registerBeanDefinition("bizService2",beanDefinition);//如果多个 参考Mybatis
     }
 }

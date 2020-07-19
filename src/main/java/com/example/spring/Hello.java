@@ -5,7 +5,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Hello implements BeanPostProcessor {
+public class Hello implements BeanPostProcessor { //BeanPostProcessor
 
     public Hello() {
         System.err.println("contract");
@@ -14,12 +14,12 @@ public class Hello implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         System.err.println("postProcessBeforeInitialization");
-        return null;
+        return bean;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         System.err.println("postProcessAfterInitialization");
-        return null;
+        return bean;
     }
 }
