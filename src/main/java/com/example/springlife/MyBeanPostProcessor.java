@@ -4,7 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class MyBeanPostProcessor implements BeanPostProcessor{
     public MyBeanPostProcessor() {
         System.out.println("这是BeanPostProcessor实现类构造器！！");

@@ -7,7 +7,7 @@ import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class MyInstantiationAwareBeanPostProcessor extends InstantiationAwareBeanPostProcessorAdapter {
 
     public MyInstantiationAwareBeanPostProcessor() {

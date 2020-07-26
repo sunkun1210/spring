@@ -4,7 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Person implements BeanFactoryAware, BeanNameAware, InitializingBean, DisposableBean {
     private String name;
     private String address;

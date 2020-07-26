@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Import;
 @ComponentScan("com.example.springlife")
 public class AppConfig {
 
-    @Bean(initMethod="myInit",destroyMethod="myDestory")
-    public Person person(){
-        return new Person();
-    }
+//    @Bean(initMethod="myInit",destroyMethod="myDestory")
+//    public Person person(){
+//        return new Person();
+//    }
 
 }
