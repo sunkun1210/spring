@@ -5,8 +5,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class B {
-    @Autowired
+
     A a;
+
+    public A getA() {
+        return a;
+    }
+    @Autowired
+    public void setA(A a) {
+        System.err.println("b set a");
+        this.a = a;
+    }
 
     public B() {
         System.err.println("B init");
